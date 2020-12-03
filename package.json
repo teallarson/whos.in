@@ -1,0 +1,23 @@
+{
+  "name": "foothills-tracker",
+  "version": "1.0.0",
+  "description": "A tracking app designed especially for Foothills Birth Cottage",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "author": "Teal Larson",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.1",
+    "tailwindcss": "^2.0.1",
+    "validator": "^13.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
