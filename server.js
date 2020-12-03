@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
 const mongoose = require ('mongoose');
+const bodyparser = require('body-parser');
 const assistants = require('./routes/api/assistants');
 const suites = require('./routes/api/suites');
+
+//Body parser configuration
+app.use(bodyparser.urlencoded({extended: false}));
+app.use(bodyparser.json());
 
 //First route
 app.get('/', (req, res) => res.send('Hello'));
