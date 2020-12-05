@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
+//load assistant model
 const Assistant = require('../../models/Assistant');
-
+//validation
+const validateAssistantInput = require('../../validation/assistant');
 
 //@route  GET /api/assistants/test
 //@desc   Tests assistants js
@@ -11,8 +13,13 @@ router.get('/test', (req, res) => res.json({msg: 'Assistants works'}));
 //@route  POST  /api/assistants/add
 //@desc   Add an assistant
 //@access Public
-
 router.post('/add', (req, res) => {
+  const {errors, isValid} = validateAssistantInput(req.body);
+
+  if(!isValid){
+    return res.status(400).json(errors);
+  }
+
   Assistant.findOne({name: req.body.name})
     .then((assistant) => {
       if(assistant){
@@ -35,7 +42,7 @@ router.post('/add', (req, res) => {
 //@route  POST  /api/assistants/update
 //@desc   Update an assistant's status/leave note
 //@access Public
-router.post('./update', (req, res) => {
+router.post('/update', (req, res) => {
   Assistant.findOne({name: req.body.name})
     .then((assistant) => {
       const assistantFields = {};
@@ -57,11 +64,30 @@ router.post('./update', (req, res) => {
     .catch()
 })
 
+//@route   GET    /api/assistants
+//@desc    Get all assistants data
+//@access  Public
+router.get('/', (req, res) => {
+  const errors = {}
+
+  Assistant.find()
+    // .populate()
+    .then((assistants) => {
+      if(!assistants) {
+        errors.noassistants = "There are no assistants";
+        return res.status(404).json(errors);
+      }
+
+      res.json(assistants);
+    })
+    .catch((err) => res.status(404).json(err));
+});
+
 //@route   DELETE /api/assistants/delete
 //@desc    Delete an assistant from the record
 //@access  PUBLIC
 router.delete(
-  './delete',
+  '/delete',
   (req, res) => {
     Assistants.findOneAndRemove({name: req.body.name})
     .then(() => res.json({ success: true }))

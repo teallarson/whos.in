@@ -6,9 +6,6 @@ const SuiteSchema = new Schema({
   suitename: {
     type: String
   },
-  suitenumber: {
-    type: String
-  },
   status: {
     type: String
   },

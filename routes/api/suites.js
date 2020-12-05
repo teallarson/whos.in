@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
+//load suite model
 const Suite = require('../../models/Suite')
+//validation
+const validateSuiteInput = require ('../../validation/suite');
 
 //@route  GET /api/suites/test
 //@desc   Tests suite js
@@ -10,7 +13,14 @@ router.get('/test', (req, res) => res.json({msg: 'Suites works'}));
 //@route  POST  /api/suites/add
 //@route  Add a suite
 //@access Public
-router.post('./add', (req, res) => {
+router.post('/add', (req, res) => {
+  const {errors, isValid} = 
+  validateSuiteInput(req.body);
+
+  if(!isValid){
+    return res.status(400).json(errors);
+  }
+
   Suite.findOne({suitename: req.body.suitename})
     .then((suite) => {
       if(suite){
@@ -18,7 +28,6 @@ router.post('./add', (req, res) => {
       } else {
         const newSuite = new Suite({
           suitename: req.body.suitename,
-          suitenumber: req.body.suitenumber,
           status: req.body.status,
           provider: req.body.provider,
           notes: req.body.notes
