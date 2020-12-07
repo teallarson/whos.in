@@ -1,14 +1,12 @@
-import {
-  SET_ERROR
-} from '../actions/types';
+import { SET_ERROR } from '../actions/types';
 
 const initialState = {};
 
-export default function(state=initialState, action){
-  switch(action.type){
+export default function (state = initialState, action) {
+  switch (action.type) {
     case SET_ERROR:
-        return action.payload
+      return action.payload;
     default:
-      return state
+      return state;
   }
 }

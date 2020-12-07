@@ -28,16 +28,16 @@ export const getAssistants = () => dispatch => {
   dispatch(setAssistantLoading());
   axios
     .get('api/assistants')
-    .then(res => 
+    .then((res) => 
       dispatch({
         type: GET_ASSISTANTS,
-        payload: res.data
+        payload: res.data,
       })
     )
-    .catch(err => 
+    .catch((err) => 
       dispatch({
         type: GET_ASSISTANTS,
-        payload: null
+        payload: null,
       })
     );
 };

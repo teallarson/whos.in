@@ -6,8 +6,9 @@ import {
 
 const initialState = {
   assistant: {},
-  assistants: {}
-}
+  assistants: [],
+  loading: false,
+};
 
 export default function(state=initialState, action){
 

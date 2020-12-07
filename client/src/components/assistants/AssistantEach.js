@@ -7,6 +7,8 @@ class AssistantEach extends Component {
   constructor(){
     super();
     this.state = {
+      name: '',
+      phone: '',
       status: '',
       notes:'',
       errors:{}
@@ -14,6 +16,10 @@ class AssistantEach extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+
+  // componentDidMount(){
+  //   this.props.
+  // }
 
   onChange(e){
     this.setState({[e.target.name]: e.target.value});
@@ -30,12 +36,13 @@ class AssistantEach extends Component {
 
 
   render() {
-    const { assistant } = this.props;
+    const assistant = this.props.assistant;
+    console.log(assistant);
     return (
       <div>
         <form className="card col-lg-3 col-md-4 col-sm-9" onSubmit={this.onSubmit}>
           <div className="card-header">
-            <em>{assistant.name}</em>
+            <p><em>{assistant.name}</em></p>
             <p>{assistant.phone}</p>
           </div>
           <div className="card-body">
@@ -73,7 +80,7 @@ AssistantEach.propTypes = {
   updateAssistant: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   assistant: state.assistant,
 })
 

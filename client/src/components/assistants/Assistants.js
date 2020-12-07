@@ -12,15 +12,19 @@ class Assistants extends Component {
 
   render() {
     const { assistants, loading } = this.props.assistant;
-    console.log(assistants);
+    // console.log(assistants);
     let assistantItems;
 
     if (assistants === null || loading){
       assistantItems = <Spinner />
     } else {
       if (assistants.length > 0){
-        assistantItems = assistants.map(assistant => (
-          <AssistantEach key={assistant._id} assistant={assistant} />
+        assistantItems = 
+        assistants.map( (assistant, index) => (
+          // console.log(assistant),
+          <AssistantEach 
+          key={ assistant._id }
+          assistant={ assistant } />
         ));
       } else {
         assistantItems = <h4>No assistants found...</h4>;
@@ -38,7 +42,7 @@ class Assistants extends Component {
 
 Assistants.propTypes = {
   getAssistants: PropTypes.func.isRequired,
-  assistant: PropTypes.object.isRequired
+  assistant: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
