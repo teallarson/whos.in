@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import AddElements from '../add-elements/AddElements';
 import Assistants from '../assistants/Assistants';
 import Suites from '../suites/Suites';
 
@@ -7,11 +6,8 @@ import Suites from '../suites/Suites';
   render() {
     return (
       <div>
-        <div>
           <Suites />
           <Assistants />
-          <AddElements />
-        </div>
       </div>
     )
   }

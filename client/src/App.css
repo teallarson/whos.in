@@ -1,3 +1,44 @@
+:root{
+  --green-color: #1F413B;
+  --med-grey-color: #B3BAB8;
+  --light-grey-color: #E0DEE0;
+}
+
 .App {
   text-align: center;
+  font-family: Arial !important;
 }
+
+* {
+  border-radius: 0 !important;
+}
+
+#category-card-header {
+
+}
+
+#assistant-name-box{
+  background-color: var(--green-color);
+  color: white !important;
+  text-transform: uppercase;
+  letter-spacing: 1px
+}
+
+.custom-button{
+  background-color: var(--med-grey-color);
+  color: black;
+  border-style: none !important;
+}
+
+textarea {
+  border: none;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  resize: none;
+}
+

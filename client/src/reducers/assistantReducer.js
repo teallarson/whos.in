@@ -10,7 +10,7 @@ const initialState = {
   loading: false,
 };
 
-export default function(state=initialState, action){
+export default function reducerStates(state=initialState, action){
 
   switch(action.type){
     case ASSISTANT_LOADING:

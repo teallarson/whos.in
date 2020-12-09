@@ -5,7 +5,7 @@ import {
   CLEAR_ERRORS,
   ASSISTANT_LOADING,
   GET_ASSISTANTS,
-  GET_ERRORS } from "./types"
+   } from "./types"
 
 //Add assistant
 export const addAssistant = (assistantData) => dispatch => {
@@ -42,20 +42,9 @@ export const getAssistants = () => dispatch => {
     );
 };
 
-//Update Assistant
-export const updateAssistant = (assistantData, history) => dispatch => {
-  axios
-    .post('/api/assistants/update', assistantData)
-    .then(res => history.push('/'))
-    .catch(err => 
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
-};
 
 //Delete Assistant
+
 
 //Assistant loading
 export const setAssistantLoading = () => {

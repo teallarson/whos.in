@@ -39,11 +39,12 @@ router.post('/add', (req, res) => {
     })
     .catch();
 })
+
 //@route  POST  /api/suites/update
 //@desc   Update a suite's status, notes, etc.
 //@access Public
 router.post('/update', (req, res) => {
-  Suite.findOne({name: req.body.suitename})
+  Suite.findOne({suitename: req.body.suitename})
     .then((suite) => {
       const suiteFields = {};
       suiteFields.status = req.body.status;
@@ -51,19 +52,49 @@ router.post('/update', (req, res) => {
       suiteFields.notes = req.body.notes;
 
       if(suite){
-        //update suite status and notes
+        //update suite status
         Suite.findOneAndUpdate(
           { suitename: req.body.suitename },
           { $set: suiteFields },
           { new: true }
-        )
-        .then(suite => res.json(suite));
+          )
+          .then(suite => res.json(suite));
       } else {
         return res.status(400).json({suite: 'That suite does not exist'});
       }
     })
-    .catch();
+    .catch()
 })
 
+//@route   GET   /api/suites
+//@desc    Get all suite data
+//@access  Public
+router.get('/', (req, res) => {
+  const errors = {};
+
+  Suite.find()
+    .then((suites) => {
+      if(!suites) {
+        errors.nosuites = "There are no suites";
+        return res.status(404).json(errors);
+      }
+
+      res.json(suites);
+    })
+    .catch((err) => res.status(404).json(err))
+});
+
+
+//@route   DELETE /api/suites/delete
+//@desc    Delete a suite from the record
+//@access  PUBLIC
+router.delete(
+  '/delete',
+  (req, res) => {
+    Suites.findOneAndRemove({name: req.body.suitename})
+    .then(() => res.json({ success: true }))
+    .catch((err) => console.log(err));
+  }
+);
 
 module.exports = router;
