@@ -6,8 +6,14 @@ import Suites from '../suites/Suites';
   render() {
     return (
       <div>
-          <Suites />
-          <Assistants />
+        <div className="row justify-content-center">
+          <div className="col-xs-12 col-lg-5">
+            <Suites />
+          </div>
+          <div className="mx-auto col-xs-12 col-lg-7">
+            <Assistants />
+          </div>
+        </div>
       </div>
     )
   }

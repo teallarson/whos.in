@@ -50,13 +50,13 @@ class AssistantEach extends Component {
 
     return (
       <div>
-        <div className="col">
-          <form className="card mb-4 mx-auto custom-form" 
+        <div className="col justify-items-center">
+          <form className="card mb-4 mx-auto custom-form" id="assistant-card" 
           onSubmit={this.onSubmit}
             >
-            <div className="card-header pt-4" id="assistant-name-box">
-              <p>{assistant.name}</p>
-              <p> {assistant.phone}</p>
+            <div className="card-header pt-4 m-1" id="assistant-name-box">
+              <p className="shadow text-break">{assistant.name}</p>
+              <p className="shadow"> {assistant.phone}</p>
             </div>
             <div className="card-body">
               <div className="form-group">
@@ -82,10 +82,7 @@ class AssistantEach extends Component {
                 name="notes" />
               </div>
               <div className="container mx-auto d-flex justify-content-around align-items-center mt-4">
-                <button
-                  type="submit"
-                  className="btn custom-button"
-                >
+                <button type="submit" className="btn shadow custom-button btn-outline-secondary">
                   Save Update
                 </button>
               </div>

@@ -31,14 +31,12 @@ class Assistants extends Component {
 
     return (
       <div>
-        <div className="card mx-5">
-          <div className="card-header p-3">
+        <div className="card shadow p-3 mb-2 mx-auto" id="category-card">
+          <div className="card-header mx-auto my-auto shadow col-10" id="assistant-header">
             <h2>Assistant Status</h2>
           </div>
-          <div className="card-body row mx-auto justify-content-center">
-            {/* <div class="col"> */}
+          <div className="card-body row justify-content-center">
               {assistantItems}
-            {/* </div> */}
           </div>
         </div>
       </div>

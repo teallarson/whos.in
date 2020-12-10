@@ -52,10 +52,10 @@ class SuiteEach extends Component {
 
     return (
       <div>
-        <form className="col-lg-9 col-md-4 col-sm-9 mx-auto mb-5 mt-3 custom-form" onSubmit={this.onSubmit}>
-            <div className="form-group col-6 mx-auto">
+        <form className="col-md-9 col-xs-12 mx-auto mb-5 mt-3 custom-form card py-4" id="assistant-card"  onSubmit={this.onSubmit}>
+            <div className="form-group col-12 mx-auto">
               <label htmlFor="suite-availability-choices">Available?</label>
-              <select id="suite-availability-choices" className="custom-select" name="status" 
+              <select id="suite-availability-choices" className="col-12 custom-select" name="status" 
               defaultValue={suite.status}
               onChange={this.onChange}>
                 <option value="1">Heads Up</option>
@@ -66,7 +66,7 @@ class SuiteEach extends Component {
               </select>
             </div>
 
-            <div className="form-group col-6 mx-auto">
+            <div className="form-group col-12 mx-auto">
               <label htmlFor="provider-choices">Provider</label>
               <select id="provider-choices" className="custom-select" name="provider" 
               defaultValue={suite.provider}
@@ -78,7 +78,7 @@ class SuiteEach extends Component {
               </select>
             </div>
 
-            <div className="form-group col-6 mx-auto">
+            <div className="form-group col-12 mx-auto">
               <label htmlFor="suite-notes">Notes</label>
               <textarea 
               className="form-control" id="suite-notes" 
@@ -87,14 +87,11 @@ class SuiteEach extends Component {
               onChange={this.onChange}
               name="notes"/>
             </div>
-            <div className="container mx-auto d-flex justify-content-around align-items-center mt-4">
-                  <button
-                    type="submit"
-                    className="btn custom-button"
-                  >
-                    Save Update
-                  </button>
-                </div>
+            <div className="container mx-auto d-flex justify-content-around align-items-center mt-5">
+              <button type="submit" className="btn shadow custom-button btn-outline-dark">
+                Save Update
+              </button>
+            </div>
         </form>
       </div>
     )

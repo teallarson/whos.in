@@ -29,12 +29,12 @@ class Suites extends Component {
     }
 
     return (
-      <div className="card mb-5 mx-5">
-          <div className="card-header">
-            <h2>Suite Status</h2>
-          </div>
-          <div className="card-body">
-            {suiteItems}
+      <div className="card mb-5 shadow p-3 px-5" id="category-card">
+        <div className="card-header my-auto shadow" id="suite-header">
+          <h2>Suite Status</h2>
+        </div>
+        <div className="card-body">
+          {suiteItems}
         </div>
       </div>
     )

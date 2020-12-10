@@ -6,28 +6,56 @@
 
 .App {
   text-align: center;
-  font-family: Arial !important;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Roboto' !important;
+  max-width: 100vw;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+body {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 * {
   border-radius: 0 !important;
 }
 
-#category-card-header {
-
+#birth-cottage-letterhead {
+  max-width: 100%;
 }
 
-#assistant-name-box{
+#suite-header, #assistant-header {
+  background-color: var(--med-grey-color);
+}
+
+#category-card {
   background-color: var(--green-color);
   color: white !important;
   text-transform: uppercase;
   letter-spacing: 1px
 }
 
+#assistant-card {
+  background-color: var(--light-grey-color);
+  color: black;
+}
+
+#assistant-name-box {
+  background-color: var(--light-grey-color);
+}
+
+#assistant-name-box p {
+  background-color: #0F0C08;
+  color: white;
+}
+
 .custom-button{
   background-color: var(--med-grey-color);
   color: black;
-  border-style: none !important;
 }
 
 textarea {
