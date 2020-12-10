@@ -10,9 +10,6 @@ const suites = require('./routes/api/suites');
 app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
 
-//First route
-app.get('/', (req, res) => res.send('Hello'));
-
 //Use routes
 app.use('/api/assistants', assistants);
 app.use('/api/suites', suites);
