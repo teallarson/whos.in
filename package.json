@@ -1,7 +1,7 @@
 {
-  "name": "foothills-tracker",
+  "name": "whos-in",
   "version": "1.0.0",
-  "description": "A tracking app designed especially for Foothills Birth Cottage",
+  "description": "Suite and assistant information at-a-glance",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
