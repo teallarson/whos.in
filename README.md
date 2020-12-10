@@ -5,6 +5,9 @@
 ## About
 Whos.in is a dashboard for tracking suite and assistant status.  Built for a local birth center seeking a way to share information amongst providers and assistants.  A complete full stack build.  Fully implemented build includes password protection/authentication, but this copy is open for others to browse my code!
 
+## See it Live
+See it in action deployed [on Heroku](https://fast-river-36177.herokuapp.com/).
+
 ## Built With
 - [React](http://www.reactjs.org)
 - [Redux](https://react-redux.js.org/)
