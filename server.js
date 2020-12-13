@@ -6,6 +6,7 @@ const bodyparser = require('body-parser');
 const assistants = require('./routes/api/assistants');
 const suites = require('./routes/api/suites');
 
+
 //Body parser configuration
 app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());

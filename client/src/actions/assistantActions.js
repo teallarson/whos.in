@@ -5,6 +5,7 @@ import {
   CLEAR_ERRORS,
   ASSISTANT_LOADING,
   GET_ASSISTANTS,
+  GET_ERRORS,
    } from "./types"
 
 //Add assistant
@@ -44,7 +45,22 @@ export const getAssistants = () => dispatch => {
 
 
 //Delete Assistant
-
+export const deleteAssistant = () => (dispatch) => {
+  if (window.confirm("Are you sure? This can not be undone!")) {
+    axios 
+      .delete('/api/assistants/delete')
+      .then((res) => dispatch({
+          type: GET_ASSISTANTS,
+          payload: res.data
+        })
+      )
+      .catch((err) => dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    )
+  }
+}
 
 //Assistant loading
 export const setAssistantLoading = () => {

@@ -7,3 +7,4 @@ export const SET_ERROR = 'SET_ERROR';
 export const GET_ERRORS = 'GET_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const ASSISTANT_LOADING = 'ASSISTANT_LOADING';
+export const SET_PROVIDER = 'SET_PROVIDER';

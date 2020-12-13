@@ -13,7 +13,7 @@ router.get('/test', (req, res) => res.json({msg: 'Suites works'}));
 //@route  POST  /api/suites/add
 //@route  Add a suite
 //@access Public
-router.post('/add', (req, res) => {
+router.post('/add', passport.authenticate('jwt', { session: false }), (req, res) => {
   const {errors, isValid} = 
   validateSuiteInput(req.body);
 
@@ -89,7 +89,7 @@ router.get('/', (req, res) => {
 //@desc    Delete a suite from the record
 //@access  PUBLIC
 router.delete(
-  '/delete',
+  '/delete', passport.authenticate('jwt', { session: false }),
   (req, res) => {
     Suites.findOneAndRemove({name: req.body.suitename})
     .then(() => res.json({ success: true }))

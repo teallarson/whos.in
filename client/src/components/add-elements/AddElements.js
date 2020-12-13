@@ -13,9 +13,9 @@ class AddElements extends Component {
       <div>
       <div className="container m-5 col-9 mx-auto">
         <div className="accordion" id="addElements">
-          <div className="card">
+          {/* <div className="card">
             {addSuite}
-          </div>
+          </div> */}
           <div className="card">
             {addAssistant}
           </div>

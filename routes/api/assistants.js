@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 //load assistant model
 const Assistant = require('../../models/Assistant');
 //validation
@@ -13,7 +14,7 @@ router.get('/test', (req, res) => res.json({msg: 'Assistants works'}));
 //@route  POST  /api/assistants/add
 //@desc   Add an assistant
 //@access Public
-router.post('/add', (req, res) => {
+router.post('/add', passport.authenticate('jwt', { session: false }),(req, res) => {
   const {errors, isValid} = validateAssistantInput(req.body);
 
   if(!isValid){
@@ -87,7 +88,7 @@ router.get('/', (req, res) => {
 //@desc    Delete an assistant from the record
 //@access  PUBLIC
 router.delete(
-  '/delete',
+  '/delete', passport.authenticate('jwt', { session: false }), 
   (req, res) => {
     Assistants.findOneAndRemove({name: req.body.name})
     .then(() => res.json({ success: true }))
