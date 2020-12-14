@@ -12,4 +12,4 @@ const providerSchema = new Schema({
   }
 });
 
-module.exports = Provider = mongoose.model('provider', providerSchema);
+module.exports = Provider = mongoose.model('providers', providerSchema);

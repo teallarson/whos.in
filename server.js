@@ -5,6 +5,7 @@ const path = require('path');
 const bodyparser = require('body-parser');
 const assistants = require('./routes/api/assistants');
 const suites = require('./routes/api/suites');
+const providers = require('./routes/api/providers');
 
 
 //Body parser configuration
@@ -14,6 +15,7 @@ app.use(bodyparser.json());
 //Use routes
 app.use('/api/assistants', assistants);
 app.use('/api/suites', suites);
+app.use('/api/providers', providers);
 
 //production
 if(process.env.NODE_ENV === 'production'){
