@@ -27,3 +27,6 @@ Running your own instance of this app will not connect with my databases.  If yo
 3. Run <code>npm install</code>
 4. Run <code>npm run dev</code>
 
+## Version History
+- 1.0.0: Initial deploy
+- 1.2.0: In development, adding admin portal for adding/removing assistants and suites.
