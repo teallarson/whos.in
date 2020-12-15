@@ -29,4 +29,4 @@ Running your own instance of this app will not connect with my databases.  If yo
 
 ## Version History
 - 1.0.0: Initial deploy
-- 1.2.0: In development, adding admin portal for adding/removing assistants and suites.
+- 1.2.0: In development, adding admin portal for adding/removing assistants and suites.  Adjusting contrast for accessibility concerns.
