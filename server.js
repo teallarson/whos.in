@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const passport = require('passport');
+const nodemailer = require('nodemailer');
 const path = require('path');
 const bodyparser = require('body-parser');
 const assistants = require('./routes/api/assistants');
@@ -35,3 +37,8 @@ mongoose
   .connect(db)
   .then(() => console.log('MongoDb connected'))
   .catch(err => console.log(err));
+
+  
+//Passport configuration
+app.use(passport.initialize());
+require('./config/passport')(passport);
