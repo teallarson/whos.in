@@ -7,6 +7,7 @@ const nodemailer = require('nodemailer');
 const keys = require('../../config/keys');
 const validateLoginInput = require('../../validation/login');
 const validateRegisterInput = require('../../validation/register');
+const validateChangepwInput = require('../../validation/changepw');
 const router = express.Router();
 
 
@@ -161,6 +162,12 @@ router.post('/forgotpw', (req, res) => {
 router.post(
   '/changepw', 
   passport.authenticate('jwt', { session: false }), (req, res) => {
+    const { errors, isValid } = validateChangepwInput(req.body);
+
+      if (!isValid) {
+        return res.status(400).json(errors);
+      }
+    
     const email = req.body.email;
     const oldPassword = req.body.oldPassword;
     const newPassword = req.body.newPassword;
@@ -179,17 +186,17 @@ router.post(
                 if(err) throw err;
                 bcrypt.hash(newPassword, salt, (err, hash) => {
                   if (err) throw err;
-                  newPassword = hash;
+                  provider.newPassword = hash;
                   Provider.updateOne(
                     { email: req.body.email },
-                    { $set: { password: newPassword }}
+                    { $set: { password: provider.newPassword }}
                   )
                     .then((provider) => { res.json(provider)})
                     .catch((err) => console.log(err));
                 });
               });
             } else {
-              console.log("Could not change password.  Try again.")
+              console.log("Could not change password. Try again later.")
             }
           })
           .catch((err => console.log(err)));

@@ -1,5 +1,5 @@
 import isEmpty from '../validation/is-empty';
-import { SET_USER } from '../actions/types';
+import { SET_PROVIDER } from '../actions/types';
 
 const initialState = {
   isAuthenticated: false,
@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-  switch (action.type){
+  switch (action.type) {
     case SET_PROVIDER:
       return {
         ...state,

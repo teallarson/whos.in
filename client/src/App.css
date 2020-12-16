@@ -1,7 +1,10 @@
+/*Whole App*/
+
 :root{
   --green-color: #1F413B;
   --med-grey-color: #B3BAB8;
   --light-grey-color: #E0DEE0;
+  --near-black-color: #0F0C08;
 }
 
 .App {
@@ -28,34 +31,13 @@ body {
   max-width: 100%;
 }
 
-#suite-header, #assistant-header {
-  background-color: var(--med-grey-color);
-}
-
-#category-card {
-  background-color: var(--green-color);
-  color: white !important;
-  text-transform: uppercase;
-  letter-spacing: 1px
-}
-
-#assistant-card {
-  background-color: var(--light-grey-color);
-  color: black;
-}
-
-#assistant-name-box {
-  background-color: var(--light-grey-color);
-}
-
-#assistant-name-box p {
-  background-color: #0F0C08;
-  color: white;
-}
-
 .custom-button{
   background-color: var(--med-grey-color);
   color: black;
+}
+
+.custom-button:hover{
+  background-color: var(--near-black-color);
 }
 
 textarea {
@@ -70,3 +52,49 @@ textarea {
   resize: none;
 }
 
+/* Main Page*/
+#category-card {
+  background-color: var(--green-color);
+  color: white !important;
+  text-transform: uppercase;
+  letter-spacing: 1px
+}
+
+#suite-header, #assistant-header {
+  background-color: var(--med-grey-color);
+  color: black;
+}
+
+#suite-header h2, #assistant-header h2 {
+  font-weight: 100;
+}
+
+
+#assistant-card {
+  background-color: var(--light-grey-color);
+  color: black;
+}
+
+#assistant-name-box {
+  background-color: var(--light-grey-color);
+}
+
+#assistant-name-box p {
+  background-color: var(--near-black-color);
+  font-weight: 100;
+  color: white;
+}
+
+/* Admin Portal*/
+
+#login-card {
+  background-color: var(--green-color);
+  color: white !important;
+  text-transform: uppercase;
+  letter-spacing: 1px
+}
+
+#login-label{
+  background-color: var(--near-black-color);
+  color: white;
+}

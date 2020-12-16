@@ -4,9 +4,12 @@ import {Provider} from 'react-redux';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Landing from './components/layout/Landing';
+import Login from './components/auth/Login';
+import ForgotPassword from './components/auth/ForgotPassword';
+import ChangePassword from './components/auth/ChangePassword';
+import PrivateRoute from "./components/common/PrivateRoute";
 import store from './store';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
   render() {
@@ -19,6 +22,16 @@ class App extends Component {
               
               <main className="mx-auto">
                 <Route exact path="/" component={Landing} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/forgotPassword" component={ForgotPassword} />
+                <Route exact path="/forgotPassword" component={ForgotPassword} />
+                <Switch>
+                <PrivateRoute
+                  exact
+                  path="/changePassword"
+                  component={ChangePassword}
+                />
+              </Switch>
               </main>
 
               <footer>
