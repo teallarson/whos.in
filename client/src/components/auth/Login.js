@@ -106,7 +106,7 @@ class Login extends Component {
                   <Link to="/forgotPassword">
                     <button
                       type="button"
-                      class="btn btn-lg btn-light btn-outline-dark align-self-center p-3 custom-button"
+                      className="btn btn-lg btn-light btn-outline-dark align-self-center p-3 custom-button"
                     >
                       Forgot Password?
                     </button>

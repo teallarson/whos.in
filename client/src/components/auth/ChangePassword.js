@@ -45,18 +45,16 @@ class ChangePassword extends Component {
     const { errors } = this.state;
     return (
       <div className="changePassword">
-        <div className="container">
+        <div className="container card-body shadow mt-5 col-lg-6" id="login-card">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h2 className="display-5 text-center">Change password</h2>
-              <p className="lead text-center">
-                
-              </p>
-              <form noValidate onSubmit={this.onSubmit}>
+              <h2 className="display-5 p-2 shadow mb-3 col-8 mx-auto text-center" id="changepw-label">Change password</h2>
+              
+              <form noValidate className="col-10 mx-auto mt-4" onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
                     type="email"
-                    className={classnames("form-control form-control-lg", {
+                    className={classnames("form-control form-control-lg shadow", {
                       "is-invalid": errors.email,
                     })}
                     placeholder="Email Address"
@@ -71,10 +69,10 @@ class ChangePassword extends Component {
                 <div className="form-group">
                   <input
                     type="password"
-                    className={classnames("form-control form-control-lg", {
+                    className={classnames("form-control form-control-lg shadow", {
                       "is-invalid": errors.password,
                     })}
-                    placeholder="oldPassword"
+                    placeholder="Old Password"
                     name="oldPassword"
                     value={this.state.oldPassword}
                     onChange={this.onChange}
@@ -86,10 +84,10 @@ class ChangePassword extends Component {
                 <div className="form-group">
                   <input
                     type="password"
-                    className={classnames("form-control form-control-lg", {
+                    className={classnames("mt-5 form-control shadow form-control-lg", {
                       "is-invalid": errors.password,
                     })}
-                    placeholder="newPassword"
+                    placeholder="New Password"
                     name="newPassword"
                     value={this.state.newPassword}
                     onChange={this.onChange}
@@ -101,7 +99,7 @@ class ChangePassword extends Component {
                 <div className="form-group">
                   <input
                     type="password"
-                    className={classnames("form-control form-control-lg", {
+                    className={classnames("form-control form-control-lg shadow", {
                       "is-invalid": errors.newPassword2,
                     })}
                     placeholder="Confirm New Password"
@@ -113,7 +111,7 @@ class ChangePassword extends Component {
                     <div className="invalid-feedback">{errors.password2}</div>
                   )}
                 </div>
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+                <button type="submit" className="btn btn-lg btn-outline-dark align-self-center col-5 custom-button mt-2">Submit</button>
               </form>
             </div>
           </div>

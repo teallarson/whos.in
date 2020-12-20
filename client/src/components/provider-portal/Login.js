@@ -104,7 +104,7 @@ class Login extends Component {
                   <Link to="/forgotPassword">
                     <button
                       type="button"
-                      class="btn btn-default btn-lg btn-block"
+                      className="btn btn-default btn-lg btn-block"
                     >
                       Forgot Password?
                     </button>

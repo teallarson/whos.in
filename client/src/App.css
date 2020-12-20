@@ -28,7 +28,7 @@ body {
 }
 
 #birth-cottage-letterhead {
-  max-width: 100%;
+  max-width: 95vw;
 }
 
 .custom-button{
@@ -94,7 +94,7 @@ textarea {
   letter-spacing: 1px
 }
 
-#login-label{
+#login-label, #changepw-label{
   background-color: var(--near-black-color);
   color: white;
 }

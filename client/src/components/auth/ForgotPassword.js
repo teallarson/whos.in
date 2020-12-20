@@ -31,12 +31,13 @@ class ForgotPassword extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className='container'>
+      <div className='container card-body align-items-center mx-auto col-lg-6 shadow' id="login-card">
         <div className='row'>
           <div className='col-md-8 m-auto'>
-            <h1 className='display-4 text-center'>Forgot password</h1>
-            <p className='lead text-center'>Set password</p>
-            <form noValidate onSubmit={this.onSubmit}>
+            <h1 className='display-5 text-center' id="login">Forgot password</h1>
+            <p className='lead shadow p-2 text-center' id="login-label">Enter email address</p>
+            <form noValidate
+            onSubmit={this.onSubmit}>
               <div className='form-group'>
                 <input
                   type='email'
@@ -52,7 +53,7 @@ class ForgotPassword extends Component {
                   <div className='invalid-feedback'>{errors.email}</div>
                 )}
               </div>
-              <input type='submit' className='btn btn-info btn-block mt-4' />
+              <button type='submit' className='btn btn-lg btn-light btn-outline-dark align-self-center p-3 custom-button mt-4'>Submit</button>
             </form>
           </div>
         </div>

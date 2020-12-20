@@ -54,9 +54,8 @@ export const logoutProvider = () => (dispatch) => {
 
 export const changePassword = (providerData, history) => (dispatch) => {
   axios
-    .post("/api/providers/changePassword", providerData)
+    .post("/api/providers/changepw", providerData)
     .then((res) => {
-     
       //Remove token from ls
       localStorage.removeItem("jwtToken");
       //Remove token from axios header

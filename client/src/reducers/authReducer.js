@@ -6,7 +6,7 @@ const initialState = {
   provider: {},
 };
 
-export default function (state = initialState, action) {
+export default function reducerStates(state = initialState, action) {
   switch (action.type) {
     case SET_PROVIDER:
       return {
