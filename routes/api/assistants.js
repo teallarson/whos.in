@@ -90,7 +90,7 @@ router.get('/', (req, res) => {
 router.delete(
   '/delete', passport.authenticate('jwt', { session: false }), 
   (req, res) => {
-    Assistants.findOneAndRemove({name: req.body.name})
+    Assistant.findOneAndRemove({name: req.body.name})
     .then(() => res.json({ success: true }))
     .catch((err) => console.log(err));
   }

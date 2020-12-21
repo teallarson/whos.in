@@ -98,3 +98,12 @@ textarea {
   background-color: var(--near-black-color);
   color: white;
 }
+
+#dashboard-card{
+  background-color: var(--light-grey-color);
+  text-transform: uppercase;
+}
+
+#dashboard-card h2{
+  font-weight: 100;
+}

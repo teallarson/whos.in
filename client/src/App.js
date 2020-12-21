@@ -7,6 +7,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Landing from './components/layout/Landing';
 import Login from './components/auth/Login';
+import Dashboard from './components/dashboard/Dashboard';
 import ForgotPassword from './components/auth/ForgotPassword';
 import ChangePassword from './components/auth/ChangePassword';
 import PrivateRoute from "./components/common/PrivateRoute";
@@ -56,6 +57,11 @@ class App extends Component {
                   exact
                   path="/changepw"
                   component={ChangePassword}
+                />
+                <PrivateRoute
+                  exact
+                  path="/dashboard"
+                  component={Dashboard}
                 />
               </Switch>
               </main>

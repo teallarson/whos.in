@@ -13,7 +13,6 @@ module.exports = passport => {
     Provider.findOne({email: jwt_payload.email})
       .then(provider => {
         if (provider) {
-          console.log(provider);
           return done(null, provider);
         }
         return done(null, false);

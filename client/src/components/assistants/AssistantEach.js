@@ -41,7 +41,6 @@ class AssistantEach extends Component {
     .post('/api/assistants/update' , assistantData)
     .then(res => console.log(res.data))
     .catch(err  => console.log(err));
-    
   }
 
 
