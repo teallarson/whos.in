@@ -7,12 +7,14 @@ class DashboardAssistantEach extends Component {
     this.state = {
       name: '',
       phone: '',
+      isEditing: false,
       errors: {}
     }
 
     this.onChange = this.onChange.bind(this);
     this.onDeleteClick = this.onDeleteClick.bind(this);
     this.onSubmitChange = this.onSubmitChange.bind(this);
+    this.onEditClick = this.onEditClick.bind(this);
   }
 
   componentDidMount(){
@@ -40,6 +42,7 @@ class DashboardAssistantEach extends Component {
 
 
   }
+
   onSubmitChange(e)  {
     e.preventDefault();
     const assistantData = {
@@ -49,22 +52,42 @@ class DashboardAssistantEach extends Component {
 
     axios 
       .post('/api/assistants/update', assistantData)
-      .then(res => console.log(res.data))
+      .then(response => {window.location.reload();})
       .catch(err => console.log(err));
+
   }
+
+  onEditClick(e){
+    e.preventDefault();
+    this.setState({isEditing: !this.state.isEditing});
+  }
+  
   
   render() {
     const assistant = this.props.assistant;
 
+    const defaultRow = (
+      <div className="row shadow bg-white border text-dark p-2 pl-3 col-10 mx-auto">    
+        <span className="col-4">{assistant.name}</span> 
+        <span className="col-4">{assistant.phone}</span> 
+        <span className="col-2"><i className="far fa-edit" onClick={this.onEditClick}></i></span> 
+        <span className="col-2"><i className="far fa-trash-alt" onClick={this.onDeleteClick}></i></span>
+      </div>)
+    
+
+    const editRow = (
+      <form className="row shadow bg-white border text-dark p-2 pl-3 col-10 mx-auto">
+        <input type="text" className="col-4" defaultValue={assistant.name} name="name" onChange={this.onChange} /> 
+        <input type="text" className="col-4" defaultValue={assistant.phone} onChnage={this.onChange} /> 
+        <span className="col-2"><i class="far fa-save" onClick={this.onSubmitChange}></i></span>
+        <span className="col-2"><i class="fas fa-undo" onClick={this.onEditClick}></i></span> 
+      </form>)
+
+
     return (
       <div>
-        <div className="row shadow bg-white border text-dark p-2 pl-3 col-10 mx-auto">
-          <span className="col-4">{assistant.name}</span> 
-          <span className="col-4">{assistant.phone}</span> 
-          <span className="col-2"><i className="far fa-edit" onClick=""></i></span> 
-          <span className="col-2"><i className="far fa-trash-alt" onClick={this.onDeleteClick}></i></span>
+          {this.state.isEditing? editRow : defaultRow}
         </div>
-      </div>
     )
   }
 }

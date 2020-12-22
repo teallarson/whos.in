@@ -36,7 +36,7 @@ class Assistants extends Component {
             <h2>Assistant Status</h2>
           </div>
           <div className="card-body row justify-content-center">
-              {assistantItems}
+              {assistantItems} 
           </div>
         </div>
       </div>
