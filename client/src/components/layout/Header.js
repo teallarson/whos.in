@@ -16,6 +16,14 @@ class Header extends Component {
 
   render() {
     const {isAuthenticated} = this.props.auth;
+    const path = this.props.location.pathname;
+    let main;
+
+    if(path == '/'){
+      main = true;
+    } else {
+      main = false;
+    }
 
     const logoutButton = (
       <div id ="return-button" className="mt-3 d-flex " onClick={this.onLogoutClick.bind(this)}>
@@ -24,15 +32,18 @@ class Header extends Component {
         </div>
       </div>  
     )
-    
-    const loginButton = (
+
+    const mainPageButton = (
       <div id ="return-button" className="mt-3 d-flex">
-        <Link to="/login" className="btn btn-outline-secondary col-8 col-md-2">Log in to Provider Portal</Link>
-      </div>  
+        <Link to="/" className="btn btn-outline-secondary col-8 col-md-2">Back to Main Page</Link>
+      </div>
     )
 
-    
-
+    const dashboardButton = (
+      <div id ="return-button" className="mt-3 d-flex">
+        <Link to="/login" className="btn btn-outline-secondary col-8 col-md-2">Provider Dashboard</Link>
+      </div>
+    )
 
 
     return (
@@ -40,10 +51,8 @@ class Header extends Component {
         <div id="birth-cottage-letterhead" className="mb-4 mt-4 mx-auto img-fluid">
           <img src={letterhead} alt="Birth Cottage letterhead" className="mx-auto"/>
           <div id="d-flex row">
-            <div id ="return-button" className="mt-3 d-flex">
-              <Link to="/" className="btn btn-outline-secondary col-8 col-md-2">Back to Main Page</Link>
-            </div>
-            {isAuthenticated? logoutButton : loginButton}
+            {main?  dashboardButton : mainPageButton}
+            {isAuthenticated? logoutButton : null}
           </div>
         </div>
       </div>

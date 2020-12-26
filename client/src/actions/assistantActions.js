@@ -10,7 +10,8 @@ import {
 
 //Add assistant
 export const addAssistant = (assistantData) => dispatch => {
-  dispatch(clearErrors());
+  dispatch(clearErrors())
+  console.log(assistantData);
   axios
       .post('api/assistants/add', assistantData)
       .then(res => 

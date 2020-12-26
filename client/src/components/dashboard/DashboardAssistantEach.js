@@ -87,7 +87,7 @@ class DashboardAssistantEach extends Component {
     return (
       <div>
           {this.state.isEditing? editRow : defaultRow}
-        </div>
+      </div>
     )
   }
 }

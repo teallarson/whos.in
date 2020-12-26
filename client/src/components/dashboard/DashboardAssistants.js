@@ -35,7 +35,12 @@ class DashboardAssistants extends Component {
 
   onSubmitClick(e){
     e.preventDefault();
-    this.props.addAssistant();
+    const assistantData = {
+      name: this.state.name,
+      phone: this.state.phone
+    };
+    this.props.addAssistant(assistantData);
+    window.location.reload();
   }
 
   render() {
@@ -51,23 +56,23 @@ class DashboardAssistants extends Component {
           <DashboardAssistantEach key={assistant._id} assistant = {assistant} />
         ));
       } else {
-        assistantItems = <h4>No assistants found</h4>;
+        assistantItems = <h4>No assistants found.  Add your first assistant to get started!</h4>;
       }
     }
 
     const addRow = (
       <form className="row shadow bg-white border text-dark p-2 pl-3 col-10 mx-auto">
         <input type="text" className="col-4" defaultValue="Assistant Name" name="name" onChange={this.onChange} /> 
-        <input type="text" className="col-4" defaultValue="Assistant Phone Number" onChange={this.onChange} /> 
-        <span className="col-2"><i class="far fa-save" onClick={this.onSubmitClick}></i></span>
-        <span className="col-2"><i class="fas fa-undo" onClick={this.onAddClick}></i></span> 
+        <input type="text" className="col-4" defaultValue="Assistant Phone Number" name="phone" onChange={this.onChange} /> 
+        <span className="col-2"><i className="far fa-save" onClick={this.onSubmitClick}></i></span>
+        <span className="col-2"><i className="fas fa-undo" onClick={this.onAddClick}></i></span> 
       </form>
     )
 
     const addButton = (
       <div className="row shadow bg-white border text-dark p-2 pl-3 col-10 mx-auto">  
         <div className="col-4">
-          <button className="btn mx-auto" onClick={this.onAddClick}><i class="fas fa-plus pr-2"></i>Add Assistant</button>   
+          <button className="btn mx-auto" onClick={this.onAddClick}><i className="fas fa-plus pr-2"></i>Add Assistant</button>   
         </div>
       </div>
     )

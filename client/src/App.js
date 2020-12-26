@@ -45,7 +45,7 @@ class App extends Component {
         <Router>
           <div className="container-fluid" id="app-wrap">
             <div className="App">
-              <Header />
+              <Route path ='/' component={Header} />
               
               <main className="mx-auto">
                 <Route exact path="/" component={Landing} />
