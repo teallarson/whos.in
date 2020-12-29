@@ -1,4 +1,4 @@
-import { SET_ERROR, SET_PROVIDER } from './types';
+import { SET_ERROR, SET_PROVIDER, PROVIDER_LOADING, GET_PROVIDERS } from './types';
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
@@ -40,6 +40,24 @@ export const loginProvider = (providerData) => (dispatch) => {
     );
 };
 
+export const getProviders = () => dispatch => {
+  dispatch(setProviderLoading());
+  axios 
+    .get('/api/providers/all')
+    .then((res) => 
+      dispatch({
+        type: GET_PROVIDERS,
+        payload: res.data,
+      })
+    )
+    .catch((err) => 
+      dispatch({
+        type: GET_PROVIDERS,
+        payload: null
+      })
+    );
+}
+
 export const logoutProvider = () => (dispatch) => {
   //Remove token from ls
   localStorage.removeItem('jwtToken');
@@ -71,3 +89,9 @@ export const changePassword = (providerData, history) => (dispatch) => {
    
 };
 
+//Suite loading
+export const setProviderLoading = () => {
+  return {
+    type: PROVIDER_LOADING
+  };
+};

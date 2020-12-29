@@ -19,7 +19,7 @@ class Header extends Component {
     const path = this.props.location.pathname;
     let main;
 
-    if(path == '/'){
+    if(path === '/'){
       main = true;
     } else {
       main = false;

@@ -4,6 +4,10 @@ const isEmpty = require('./is-empty');
 module.exports = function validateRegisterInput(data) {
   let errors = {};
 
+  if(!Validator.isLength(data.name, { min: 3 })) {
+    errors.name = "Name must be at least 3 characters"
+  }
+
   if (!Validator.isEmail(data.email)){
     errors.email = ' Email is invalid';
   }

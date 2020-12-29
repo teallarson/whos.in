@@ -92,7 +92,7 @@ class DashboardSuites extends Component {
 }
 
 DashboardSuites.propTypes = {
-  getsuites: PropTypes.func.isRequired,
+  getSuites: PropTypes.func.isRequired,
   suite: PropTypes.object.isRequired,
   addSuite: PropTypes.func.isRequired
 };

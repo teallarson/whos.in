@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getProviders } from '../../actions/authActions';
 
 class SuiteEach extends Component {
   constructor(){
@@ -16,8 +19,10 @@ class SuiteEach extends Component {
   }
 
   componentDidMount(){
+    this.props.getProviders();
     this.setState({
-      suitename: this.props.suite.suitename
+      suitename: this.props.suite.suitename,
+      providers: this.props.providers
     })
   }
 
@@ -44,11 +49,25 @@ class SuiteEach extends Component {
   render() {
     const suite = this.props.suite;
     let suiteNotes = '';
-    if (suite.notes.length<1){
+    if (!suite.notes){
       suiteNotes = "Please note any needed supplies, repairs, etc."
     } else {
       suiteNotes = suite.notes
     }
+
+    const { loading } = this.props.providers;
+    const providers = this.props.providers;
+
+    if(providers === null || loading){
+
+    }
+
+    let providersList = providers.length > 0
+      && providers.map((item, i) => {
+        return (
+          <option key={i} value={item.id}>{item.name}</option>
+        )
+      }, this);
 
     return (
       <div>
@@ -71,10 +90,11 @@ class SuiteEach extends Component {
               <select id="provider-choices" className="custom-select" name="provider" 
               defaultValue={suite.provider}
               onChange={this.onChange}>
-                <option value="1">Terah</option>
+                {providersList}
+                {/* <option value="1">Terah</option>
                 <option value="2">Brittany</option>
                 <option value="3">Jenn</option>
-                <option value="4">Kate</option>
+                <option value="4">Kate</option> */}
               </select>
             </div>
 
@@ -98,4 +118,13 @@ class SuiteEach extends Component {
   }
 }
 
-export default SuiteEach;
+SuiteEach.propTypes = {
+  getProviders: PropTypes.func.isRequired,
+  providers: PropTypes.object.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  providers: state.providers
+})
+
+export default connect(mapStateToProps, { getProviders })(SuiteEach);
