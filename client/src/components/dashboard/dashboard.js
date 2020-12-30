@@ -25,7 +25,7 @@ export default class Dashboard extends Component {
               <Link to="/changepw" className="btn btn-outline-secondary mx-auto">Change Password</Link>
               </div>
               <div id ="return-button" className="">
-              <Link to="/login" className="btn btn-outline-secondary">Add Admin Provider</Link>
+              <Link to="/register" className="btn btn-outline-secondary">Add Admin Provider</Link>
               </div>
             </div>
           </div>

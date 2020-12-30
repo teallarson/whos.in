@@ -15,6 +15,7 @@ import store from './store';
 import { logoutProvider } from './actions/authActions';
 import setAuthToken from './utils/setAuthToken';
 import { SET_PROVIDER } from './actions/types';
+import Register from './components/auth/Register';
 
 if (localStorage.jwtToken) {
   //decode token
@@ -26,7 +27,6 @@ if (localStorage.jwtToken) {
     //logout user
     store.dispatch(logoutProvider());
     // redirect to login
-    window.location.href = '/login';
   }
 
   //set auth header
@@ -62,6 +62,11 @@ class App extends Component {
                   exact
                   path="/dashboard"
                   component={Dashboard}
+                />
+                <PrivateRoute
+                  exact
+                  path="/register"
+                  component={Register}
                 />
               </Switch>
               </main>

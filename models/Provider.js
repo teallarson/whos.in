@@ -8,6 +8,7 @@ const providerSchema = new Schema({
   },
   email: {
     type: String,
+    Lowercase: true,
     required: true
   },
   password: {

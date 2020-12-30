@@ -25,8 +25,11 @@ class Login extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+    let email = this.state.email;
+    email = email.toLowerCase();
+
     const provider = {
-      email: this.state.email,
+      email: email,
       password: this.state.password,
     };
 
@@ -96,21 +99,23 @@ class Login extends Component {
                   )}
                 </div>
 
-                <div className="container mx-auto d-flex justify-content-around align-items-center mt-4">
-                  <button
-                    type="submit"
-                    className="btn btn-lg btn-light btn-outline-dark align-self-center p-3 col-5 custom-button"
-                  >
-                    Submit
-                  </button>
-                  <Link to="/forgotPassword">
+                <div className="container mx-auto mt-4">
+                  <div className="row">
                     <button
-                      type="button"
-                      className="btn btn-lg btn-light btn-outline-dark align-self-center p-3 custom-button"
+                      type="submit"
+                      className="col mx-auto btn btn-lg btn-light btn-outline-dark align-self-center p-3 m-1 col-5 custom-button text-nowrap"
                     >
-                      Forgot Password?
+                      Submit
                     </button>
-                  </Link>
+                  </div>
+                  <div className="row">
+                    <Link to="/forgotPassword" className="col mt-3" id="forgot-pw-link">
+                      <p>
+                        Forgot Password?
+                      </p>
+                      {/* </button> */}
+                    </Link>
+                  </div>
                 </div>
               </form>
             </div>

@@ -107,3 +107,8 @@ textarea {
 #dashboard-card h2{
   font-weight: 100;
 }
+
+#forgot-pw-link {
+  color: white;
+  text-decoration: underline;
+}

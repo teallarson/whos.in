@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { getProviders } from '../../actions/authActions';
 
 class SuiteEach extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       suitename: '',
       status: '',
@@ -19,10 +19,8 @@ class SuiteEach extends Component {
   }
 
   componentDidMount(){
-    this.props.getProviders();
     this.setState({
       suitename: this.props.suite.suitename,
-      providers: this.props.providers
     })
   }
 
@@ -55,20 +53,22 @@ class SuiteEach extends Component {
       suiteNotes = suite.notes
     }
 
-    const { loading } = this.props.providers;
-    const providers = this.props.providers;
+    const { loading } = this.props.auth;
+    const providers = this.props.auth.providers;
+    let providerList = [];
 
     if(providers === null || loading){
-
+      providerList = null;
     }
 
-    let providersList = providers.length > 0
-      && providers.map((item, i) => {
-        return (
-          <option key={i} value={item.id}>{item.name}</option>
-        )
-      }, this);
+    const providerArray = Object.values(providers);
+    console.log(providerArray);
 
+    providerList = providerArray.map(provider =>
+      <option key={provider._id} value={provider._id}>{provider.name}</option>
+      )
+    
+      console.log("provider = " + suite.provider);
     return (
       <div>
         <form className="col-md-9 col-xs-12 mx-auto mb-5 mt-3 custom-form card py-4" id="assistant-card"  onSubmit={this.onSubmit}>
@@ -87,14 +87,13 @@ class SuiteEach extends Component {
 
             <div className="form-group col-12 mx-auto">
               <label htmlFor="provider-choices">Provider</label>
-              <select id="provider-choices" className="custom-select" name="provider" 
+              <select id="provider-choices" className="custom-select" 
+              name="provider" 
               defaultValue={suite.provider}
-              onChange={this.onChange}>
-                {providersList}
-                {/* <option value="1">Terah</option>
-                <option value="2">Brittany</option>
-                <option value="3">Jenn</option>
-                <option value="4">Kate</option> */}
+              onChange={this.onChange}
+              value={this.provider}>
+
+               {providerList}
               </select>
             </div>
 
@@ -120,11 +119,11 @@ class SuiteEach extends Component {
 
 SuiteEach.propTypes = {
   getProviders: PropTypes.func.isRequired,
-  providers: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  providers: state.providers
+  auth: state.auth
 })
 
 export default connect(mapStateToProps, { getProviders })(SuiteEach);

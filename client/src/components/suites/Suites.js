@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getSuites } from '../../actions/suiteActions';
+import { getProviders } from '../../actions/authActions';
 import Spinner from '../common/Spinner'
 import SuiteEach from './SuiteEach';
 
 class Suites extends Component {
   componentDidMount(){
     this.props.getSuites();
+    this.props.getProviders();
   }
 
   render() {
@@ -43,11 +45,13 @@ class Suites extends Component {
 
 Suites.propTypes = {
   getSuites: PropTypes.func.isRequired,
-  suite: PropTypes.object.isRequired
+  suite: PropTypes.object.isRequired,
+  getProviders: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  suite: state.suite
+  suite: state.suite,
+  providers: state.providers
 });
 
-export default connect(mapStateToProps, { getSuites })(Suites);
+export default connect(mapStateToProps, { getSuites, getProviders })(Suites);

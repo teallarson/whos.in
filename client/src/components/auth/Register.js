@@ -28,7 +28,7 @@ class Register extends Component{
 
     const newProvider = {
       name: this.state.name,
-      email: this.state.email,
+      email: this.state.email.toLowerCase(),
       password: this.state.password,
       password2: this.state.password2
     };
@@ -88,8 +88,8 @@ class Register extends Component{
                     className={classnames("form-control form-control-lg shadow", {
                       "is-invalid": errors.password,
                     })}
-                    placeholder="Old Password"
-                    name="oldPassword"
+                    placeholder="Password"
+                    name="Password"
                     value={this.state.password}
                     onChange={this.onChange}
                   />
@@ -100,7 +100,7 @@ class Register extends Component{
                 <div className="form-group">
                   <input
                     type="password"
-                    className={classnames("mt-5 form-control shadow form-control-lg", {
+                    className={classnames("form-control shadow form-control-lg", {
                       "is-invalid": errors.password2,
                     })}
                     placeholder="Confirm Password"

@@ -1,8 +1,9 @@
-import { SET_ERROR, SET_PROVIDER, PROVIDER_LOADING, GET_PROVIDERS } from './types';
+import { SET_ERROR, SET_PROVIDER, PROVIDER_LOADING, GET_PROVIDERS, GET_ERRORS } from './types';
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 
+//register provider
 export const registerProvider = (providerData, history) => (dispatch) => {
   axios
     .post('/api/providers/register', providerData)
@@ -15,6 +16,7 @@ export const registerProvider = (providerData, history) => (dispatch) => {
     );
 };
 
+//login provider
 export const loginProvider = (providerData) => (dispatch) => {
   axios
     .post('/api/providers/login', providerData)
@@ -40,6 +42,7 @@ export const loginProvider = (providerData) => (dispatch) => {
     );
 };
 
+//get all providers
 export const getProviders = () => dispatch => {
   dispatch(setProviderLoading());
   axios 
@@ -50,14 +53,13 @@ export const getProviders = () => dispatch => {
         payload: res.data,
       })
     )
-    .catch((err) => 
-      dispatch({
-        type: GET_PROVIDERS,
-        payload: null
-      })
-    );
+    .catch(err => dispatch({
+      type: SET_ERROR,
+      payload: err.response.data
+    }));
 }
 
+//loout provider
 export const logoutProvider = () => (dispatch) => {
   //Remove token from ls
   localStorage.removeItem('jwtToken');
@@ -70,6 +72,7 @@ export const logoutProvider = () => (dispatch) => {
   });
 };
 
+//change provider password
 export const changePassword = (providerData, history) => (dispatch) => {
   axios
     .post("/api/providers/changepw", providerData)
@@ -88,6 +91,23 @@ export const changePassword = (providerData, history) => (dispatch) => {
     .catch();
    
 };
+
+//delete provider
+export const deleteProvider = () => (dispatch) => {
+  if(window.confirm("Are you sure?  This can no be undone!")){
+    axios 
+      .delete('/api/providers/delete')
+      .then((res) => dispatch({
+          type: GET_PROVIDERS,
+          payload: res.data
+        })
+      )
+      .catch((err) => dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      }))
+  }
+}
 
 //Suite loading
 export const setProviderLoading = () => {

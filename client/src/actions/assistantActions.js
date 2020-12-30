@@ -36,12 +36,10 @@ export const getAssistants = () => dispatch => {
         payload: res.data,
       })
     )
-    .catch((err) => 
-      dispatch({
-        type: GET_ASSISTANTS,
-        payload: null,
-      })
-    );
+    .catch(err => dispatch({
+      type: SET_ERROR,
+      payload: err.response.data
+    }));
 };
 
 

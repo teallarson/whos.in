@@ -92,7 +92,7 @@ router.delete(
   (req, res) => {
     Assistant.findOneAndRemove({name: req.body.name})
     .then(() => res.json({ success: true }))
-    .catch((err) => console.log(err));
+    .catch((err) => res.status(404).json(err));
   }
 );
 

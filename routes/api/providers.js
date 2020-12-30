@@ -206,6 +206,19 @@ router.post(
   }
 );
 
+// @route   DELETE  api/providers/delete
+// @desc    Delete a provider/admin
+// @access  Private
+router.delete(
+  '/delete', passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Provider.findOneAndRemove({email: req.body.email})
+    .then(() => res.json({ success: true }))
+    .catch((err) => res.status(404).json(err));
+  }
+);
+
+
 // @route   GET api/providers/all
 // @desc    Get all providers' names
 // @access  Public
