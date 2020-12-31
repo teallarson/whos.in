@@ -1,4 +1,4 @@
-import { SET_ERROR, SET_PROVIDER, PROVIDER_LOADING, GET_PROVIDERS, GET_ERRORS } from './types';
+import { SET_ERROR, SET_PROVIDER, PROVIDER_LOADING, GET_PROVIDERS } from './types';
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
@@ -91,23 +91,6 @@ export const changePassword = (providerData, history) => (dispatch) => {
     .catch();
    
 };
-
-//delete provider
-export const deleteProvider = () => (dispatch) => {
-  if(window.confirm("Are you sure?  This can no be undone!")){
-    axios 
-      .delete('/api/providers/delete')
-      .then((res) => dispatch({
-          type: GET_PROVIDERS,
-          payload: res.data
-        })
-      )
-      .catch((err) => dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      }))
-  }
-}
 
 //Suite loading
 export const setProviderLoading = () => {

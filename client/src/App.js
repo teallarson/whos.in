@@ -9,6 +9,7 @@ import Landing from './components/layout/Landing';
 import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import ForgotPassword from './components/auth/ForgotPassword';
+import DeleteProvider from './components/dashboard/DashboardDeleteProvider';
 import ChangePassword from './components/auth/ChangePassword';
 import PrivateRoute from "./components/common/PrivateRoute";
 import store from './store';
@@ -62,6 +63,11 @@ class App extends Component {
                   exact
                   path="/dashboard"
                   component={Dashboard}
+                />
+                <PrivateRoute
+                  exact
+                  path="/deleteprovider"
+                  component={DeleteProvider}
                 />
                 <PrivateRoute
                   exact

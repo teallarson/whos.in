@@ -8,6 +8,7 @@ const keys = require('../../config/keys');
 const validateLoginInput = require('../../validation/login');
 const validateRegisterInput = require('../../validation/register');
 const validateChangepwInput = require('../../validation/changepw');
+const validateDeleteInput = require('../../validation/deleteprovider')
 const router = express.Router();
 
 
@@ -210,8 +211,11 @@ router.post(
 // @desc    Delete a provider/admin
 // @access  Private
 router.delete(
-  '/delete', passport.authenticate('jwt', { session: false }),
+  '/delete', 
+  passport.authenticate('jwt', { session: false }),
   (req, res) => {
+
+    console.log(req.body.email);
     Provider.findOneAndRemove({email: req.body.email})
     .then(() => res.json({ success: true }))
     .catch((err) => res.status(404).json(err));

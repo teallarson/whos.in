@@ -89,7 +89,7 @@ class Register extends Component{
                       "is-invalid": errors.password,
                     })}
                     placeholder="Password"
-                    name="Password"
+                    name="password"
                     value={this.state.password}
                     onChange={this.onChange}
                   />
