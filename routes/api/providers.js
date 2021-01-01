@@ -8,7 +8,9 @@ const keys = require('../../config/keys');
 const validateLoginInput = require('../../validation/login');
 const validateRegisterInput = require('../../validation/register');
 const validateChangepwInput = require('../../validation/changepw');
-const validateDeleteInput = require('../../validation/deleteprovider')
+const validateProviderInput = require('../../validation/deleteprovider');
+const { restart } = require("nodemon");
+const { route } = require("./assistants");
 const router = express.Router();
 
 
@@ -22,16 +24,18 @@ router.post('/register', (req, res) => {
     return res.status(400).json(errors);
   }
 
-  Provider.findOne({email: req.body.email}).then((provider) => {
-    if(provider) {
-      return res.status(404).json({ email: "Email already registered" });
-    } else {
-      const newProvider = new Provider({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
+  Provider.findOne({name: req.body.name})
+    .then((provider) => {
+      if(provider) {
+      return res.status(404).json({ name: "Provider with that name already exists" });
+      } else {
+        const newProvider = new Provider({
+          name: req.body.name,
+          email: req.body.email,
+          password: req.body.password
       });
 
+      if(req.body.email){
       bcrypt.genSalt(10, (err, salt) => {
         if (err) throw err;
         bcrypt.hash(newProvider.password, salt, (err, hash) => {
@@ -43,6 +47,12 @@ router.post('/register', (req, res) => {
             .catch((err) => console.log(err))
         });
       });
+      } else {
+        newProvider
+          .save()
+          .then((provider) => res.json(provider))
+          .catch((err) => console.log(err))
+      }
     }
   })
   .catch((err) => console.log(err))
@@ -214,14 +224,21 @@ router.delete(
   '/delete', 
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-
-    console.log(req.body.email);
-    Provider.findOneAndRemove({email: req.body.email})
-    .then(() => res.json({ success: true }))
-    .catch((err) => res.status(404).json(err));
+    Provider.findOneAndRemove({ name: req.body.name })
+      .then(() => res.json({success: true}))
+      .catch((err) => res.status(404).json(err));
   }
 );
 
+//@route    POST api/providers/update
+//@desc     Update a provider's name
+//@access   Private
+router.post('/update', passport.authenticate('jwt', { session: false }), (req, res) => {
+  Provider.findOne({name: req.body.name})
+    .then(provider)
+
+  }
+)
 
 // @route   GET api/providers/all
 // @desc    Get all providers' names

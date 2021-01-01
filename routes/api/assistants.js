@@ -49,6 +49,7 @@ router.post('/update', (req, res) => {
       const assistantFields = {};
       assistantFields.status = req.body.status;
       assistantFields.notes = req.body.notes;
+      assistantFields.phone = req.body.phone;
 
       if(assistant){
         //update assistant status

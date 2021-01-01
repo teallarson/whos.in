@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import DashboardSuites from './DashboardSuites';
 import DashboardAssistants from './DashboardAssistants';
+import DashboardProvider from './DashboardProvider';
 
 export default class Dashboard extends Component {
   render() {
@@ -15,20 +16,21 @@ export default class Dashboard extends Component {
           <div className="card-body">
             <DashboardAssistants />
             <DashboardSuites />
+            <DashboardProvider />
           </div>
           <div className="card-body">
           <div className="pt-3 card-header bg-transparent">
             <h2>Account Dashboard</h2>
           </div>
-            <div className="d-flex justify-content-around mx-auto mt-5 my-3">
+            <div className="d-flex card-body justify-content-center mx-auto mt-5 my-3">
               <div id ="return-button">
-              <Link to="/changepw" className="btn btn-outline-secondary mx-auto">Change Password</Link>
+              <Link to="/changepw" className="btn btn-outline-secondary mx-3">Change Password</Link>
               </div>
               <div id ="return-button" className="">
-              <Link to="/register" className="btn btn-outline-secondary">Add Provider</Link>
+              <Link to="/register" className="btn btn-outline-secondary mx-3">Add Admin Provider</Link>
               </div>
               <div id ="return-button">
-              <Link to="/deleteprovider" className="btn btn-outline-secondary mx-auto">Delete Provider</Link>
+              
               </div>
             </div>
           </div>
