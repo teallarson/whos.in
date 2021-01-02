@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { getProviders } from '../../actions/authActions';
+import ProviderList from './ProviderList';
+// import PropTypes from 'prop-types';
+// import { connect } from 'react-redux';
 
 class SuiteEach extends Component {
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.state = {
       suitename: '',
       status: '',
@@ -16,12 +16,21 @@ class SuiteEach extends Component {
     }
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.handleStateChange = this.handleStateChange.bind(this);
   }
 
   componentDidMount(){
     this.setState({
       suitename: this.props.suite.suitename,
+      status: this.props.suite.status,
+      provider: this.props.suite.provider,
+      notes: this.props.suite.notes
     })
+    if(!this.props.suite.notes){
+      this.setState({
+        notes: 'Please note any needed repairs or supplies.'
+      })
+    }
   }
 
   onChange(e){
@@ -43,32 +52,13 @@ class SuiteEach extends Component {
       .catch(err => this.setState({errors: err.response.data}));
   }
 
+  handleStateChange(value){
+    this.setState({provider: value})
+  }
   
   render() {
     const suite = this.props.suite;
-    let suiteNotes = '';
-    if (!suite.notes){
-      suiteNotes = "Please note any needed supplies, repairs, etc."
-    } else {
-      suiteNotes = suite.notes
-    }
 
-    const { loading } = this.props.auth;
-    const providers = this.props.auth.providers;
-    let providerList = [];
-
-    if(providers === null || loading){
-      providerList = null;
-    }
-
-    const providerArray = Object.values(providers);
-    console.log(providerArray);
-
-    providerList = providerArray.map(provider =>
-      <option key={provider._id} value={provider._id}>{provider.name}</option>
-      )
-    
-      console.log("provider = " + suite.provider);
     return (
       <div>
         <form className="col-md-9 col-xs-12 mx-auto mb-5 mt-3 custom-form card py-4" id="assistant-card"  onSubmit={this.onSubmit}>
@@ -85,23 +75,23 @@ class SuiteEach extends Component {
               </select>
             </div>
 
-            <div className="form-group col-12 mx-auto">
+            <ProviderList handleStateChange={this.handleStateChange} suitename={this.state.suitename} provider={this.state.provider}/>
+            {/* <div className="form-group col-12 mx-auto">
               <label htmlFor="provider-choices">Provider</label>
               <select id="provider-choices" className="custom-select" 
               name="provider" 
               defaultValue={suite.provider}
               onChange={this.onChange}
-              value={this.provider}>
-
-               {providerList}
+              >
+               <ProviderList />
               </select>
-            </div>
+            </div> */}
 
             <div className="form-group col-12 mx-auto">
               <label htmlFor="suite-notes">Notes</label>
               <textarea 
               className="form-control" id="suite-notes" 
-              placeholder={suiteNotes} 
+              placeholder={this.state.notes} 
               value={this.state.notes}
               onChange={this.onChange}
               name="notes"/>
@@ -117,13 +107,14 @@ class SuiteEach extends Component {
   }
 }
 
-SuiteEach.propTypes = {
-  getProviders: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
-};
+// SuiteEach.propTypes = {
+//   auth: PropTypes.object.isRequired,
+//   suite: PropTypes.object.isRequired
+// };
 
-const mapStateToProps = (state) => ({
-  auth: state.auth
-})
+// const mapStateToProps = (state) => ({
+//   auth: state.auth,
+//   suite: state.suite
+// })
 
-export default connect(mapStateToProps, { getProviders })(SuiteEach);
+export default SuiteEach;

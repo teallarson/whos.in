@@ -17,6 +17,7 @@ class AssistantEach extends Component {
   }
 
   componentDidMount(){
+
     this.setState({
       name: this.props.assistant.name,
       phone: this.props.assistant.phone,
