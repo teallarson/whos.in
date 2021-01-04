@@ -81,11 +81,11 @@ class DashboardProvider extends Component {
       <div>
         <div className="card shadow p-2 mx-auto m-2" id="category-card">
           <div className="card-header mx-auto my-auto shadow col-10">
-            <h3>Providers</h3>
+            <h3>Non-Admin Providers</h3>
           </div>
           <div className="card-body justify-content-center">
             {providerItems}
-            {this.state.isAdding ? addRow : addButton}
+            {this.state.isAdding ? addRow : addButton}         
           </div>
         </div>
       </div>

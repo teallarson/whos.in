@@ -18,11 +18,22 @@ class Header extends Component {
     const {isAuthenticated} = this.props.auth;
     const path = this.props.location.pathname;
     let main;
+    let duo;
 
     if(path === '/'){
       main = true;
     } else {
       main = false;
+    }
+
+    if(path=== '/register' || '/changepw'){
+      duo = true;
+    } else {
+      duo = false;
+    }
+
+    if (path=== '/dashboard' || '/'){
+      duo = false;
     }
 
     const logoutButton = (
@@ -45,13 +56,16 @@ class Header extends Component {
       </div>
     )
 
+    
+
 
     return (
       <div>
-        <div id="birth-cottage-letterhead" className="mb-4 mt-4 mx-auto img-fluid">
+        <div id="birth-cottage-letterhead" className="mb-3 mt-4 mx-auto img-fluid">
           <img src={letterhead} alt="Birth Cottage letterhead" className="mx-auto"/>
           <div id="d-flex row">
             {main?  dashboardButton : mainPageButton}
+            {duo? dashboardButton : null}
             {isAuthenticated? logoutButton : null}
           </div>
         </div>

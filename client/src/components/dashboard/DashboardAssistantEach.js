@@ -55,9 +55,9 @@ class DashboardAssistantEach extends Component {
 
     const defaultRow = (
       <div className="row shadow bg-white border text-dark p-2 pl-3 col-10 mx-auto">    
-        <span className="col-4">{assistant.name}</span> 
-        <span className="col-4">{assistant.phone}</span> 
-        <span className="col-4"><i className="far fa-trash-alt" onClick={this.onDeleteClick}></i></span>
+        <span className="col-12 col-md-4">{assistant.name}</span> 
+        <span className="col-12 col-md-4">{assistant.phone}</span> 
+        <span className="col-12 col-md-4"><i className="far fa-trash-alt" onClick={this.onDeleteClick}></i></span>
       </div>)
     
 

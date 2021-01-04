@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { registerProvider } from '../../actions/authActions';
+import { Link } from 'react-router-dom'
 
 class Register extends Component{
   constructor(){
@@ -46,7 +47,8 @@ class Register extends Component{
 
     return(
       <div className="register">
-        <div className="container card-body shadow mt-5 col-lg-6" id="login-card">
+        
+        <div className="container card-body shadow mt-3 col-lg-6" id="login-card">
           <div className="row">
             <div className="col-md-8 m-auto">
               <h2 className="display-5 p-2 shadow mb-3 col-8 mx-auto text-center" id="changepw-label">Register a Provider</h2>
