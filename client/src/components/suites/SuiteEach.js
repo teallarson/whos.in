@@ -62,7 +62,7 @@ class SuiteEach extends Component {
     return (
       <div>
         <form className="col-md-9 col-xs-12 mx-auto mb-5 mt-3 custom-form card py-4" id="assistant-card"  onSubmit={this.onSubmit}>
-        <div className="card-header col-6 col-xl-3 mx-auto pt-4 m-1" id="assistant-name-box">
+        <div className="card-header col-6 mx-auto pt-4 m-1" id="assistant-name-box">
               <p className="shadow text-break">{suite.suitename}</p>
             </div>
             <div className="form-group col-12 mx-auto">
