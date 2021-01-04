@@ -9,8 +9,6 @@ const validateLoginInput = require('../../validation/login');
 const validateRegisterInput = require('../../validation/register');
 const validateChangepwInput = require('../../validation/changepw');
 const validateProviderInput = require('../../validation/deleteprovider');
-const { restart } = require("nodemon");
-const { route } = require("./assistants");
 const router = express.Router();
 
 
