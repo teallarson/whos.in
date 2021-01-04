@@ -28,5 +28,5 @@ Running your own instance of this app will not connect with my databases.  If yo
 4. Run <code>npm run dev</code>
 
 ## Version History
-- 1.0.0: Initial deploy
-- 1.2.0: In development, adding admin portal for adding/removing assistants and suites.  Adjusting contrast to increase accessibility.
+- 1.0.0: Released 12/13/2020
+- 1.2.0: Released 1/3/2021 added admin portal for adding/removing assistants, suites, and providers.  UI adjusted to improve accessibility.
